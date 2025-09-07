@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Exercícis 7 / 8 / 9 – DOM e Eventos</title>
+    <style>
+        div {
+            word-wrap: break-word;
+            width: max-content;
+        }
+
+        section {
+            min-height: 50px
+        }
+
+        #texto {
+            font-size: 20px;
+            color: rgb(188, 27, 27);
+
+        }
+
+        #btnMostrarOcultar {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            font-family: sans-serif;
+            cursor: pointer;
+            background: #34257d;
+            background: linear-gradient(90deg, rgba(52, 37, 125, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+        }
+
+        #btnEstilo {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            font-family: sans-serif;
+            cursor: pointer;
+            background: #34257d;
+            background: linear-gradient(90deg, rgba(52, 37, 125, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+        }
+
+        #btnAdicionar {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            font-family: sans-serif;
+            cursor: pointer;
+            background: #34257d;
+            background: linear-gradient(90deg, rgba(52, 37, 125, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+        }
+
+        #btnRemover {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            font-family: sans-serif;
+            cursor: pointer;
+            background: #34257d;
+            background: linear-gradient(90deg, rgba(52, 37, 125, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+        }
+
+        #botao {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            font-family: sans-serif;
+            cursor: pointer;
+            background: #34257d;
+            background: linear-gradient(90deg, rgba(52, 37, 125, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+        }
+
+        #container {
+            margin-top: 20px;
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 10px 0;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+        }
+
+        #texto {
+            font-size: 18px;
+            color: black;
+            font-family: Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        .paragrafo {
+            margin-bottom: 10px;
+            font-family: sans-serif;
+            font-weight: bold;
+
+        }
+
+        .btn-alerta {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            font-family: sans-serif;
+            background: #34257d;
+            background: linear-gradient(90deg, rgba(52, 37, 125, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="script.js"></script>
+    <div>
+        <section>
+            <p id="texto">Front-End is so bad.</p>
+        </section>
+        <button id="botao">Alterar</button>
+
+        <script>
+            const paragrafo = document.getElementById("texto");
+            const botao = document.getElementById("botao");
+
+            botao.addEventListener("click", function () {
+                paragrafo.textContent = "Yes, Sir!";
+                paragrafo.style.color = "green"; // você pode trocar por "red", "green", etc.
+            });
+        </script>
+        <button id="btnAdicionar">Adicionar</button>
+        <button id="btnRemover">Remover</button>
+
+        <div id="container"></div>
+
+        <script>
+            const container = document.getElementById("container");
+            const btnAdicionar = document.getElementById("btnAdicionar");
+            const btnRemover = document.getElementById("btnRemover");
+
+            let elementoCriado = null;
+
+            btnAdicionar.addEventListener("click", () => {
+                if (!elementoCriado) {
+                    elementoCriado = document.createElement("div");
+                    elementoCriado.className = "box";
+                    elementoCriado.textContent = "Created";
+                    container.appendChild(elementoCriado);
+                }
+            });
+
+            btnRemover.addEventListener("click", () => {
+                if (elementoCriado) {
+                    container.removeChild(elementoCriado);
+                    elementoCriado = null;
+                }
+            });
+
+        </script>
+        <button id="btnEstilo">Alterar Estilo</button>
+        <button id="btnMostrarOcultar">Mostrar/Ocultar</button>
+
+        <script>
+            const texto = document.getElementById("texto");
+            const btnEstilo = document.getElementById("btnEstilo");
+            const btnMostrarOcultar = document.getElementById("btnMostrarOcultar");
+
+            btnEstilo.addEventListener("click", () => {
+                texto.style.color = texto.style.color === "black" ? "blue" : "black";
+                texto.style.fontFamily = texto.style.fontFamily === "Arial, sans-serif" ? "Courier New, monospace" : "Arial, sans-serif";
+            });
+
+            btnMostrarOcultar.addEventListener("click", () => {
+                texto.classList.toggle("oculto");
+            });
+        </script>
+    </div>
+    <div id="container">
+        <p class="paragrafo">Parágrafo 1</p>
+        <p class="paragrafo">Parágrafo 2</p>
+        <p class="paragrafo">Parágrafo 3</p>
+    </div>
+
+    <script>
+        const paragrafos = document.querySelectorAll(".paragrafo");
+
+        paragrafos.forEach((p, index) => {
+            const botao = document.createElement("button");
+            botao.textContent = "Mostrar texto";
+            botao.className = "btn-alerta";
+
+            botao.addEventListener("click", () => {
+                alert(`Conteúdo do parágrafo ${index + 1}`);
+            });
+
+            p.appendChild(botao);
+        });
+    </script>
+
+</body>
+
+</html>
